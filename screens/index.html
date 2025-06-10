@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../assets/css/indexPage.css">
+</head>
+<body>
+    <h1>Site Desenvolvimento Web</h1>
+
+    {% if message %}
+        <p>Mensagem: {{ message }}</p>
+    {% endif %}
+
+    <p>Hoje é: {{ date }}</p>
+
+    <h2>Lista de Estudantes:</h2>
+    {% if users %}
+        <h3>Total de estudantes: {{ users|length }}</h3>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Email</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.age }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h3>Nenhum usuário encontrado!</h3>
+    {% endif %}
+</body>
+</html>
